@@ -17,6 +17,13 @@ const default_UA = 'Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) Apple
 const Referer = 'https://jingcai-h5.jd.com/'
 const Origin = 'https://jingcai-h5.jd.com'
 
+const sleep = (delay = 2000) => {
+    return new Promise((resolve) => {
+        settimeout(() => {
+            resolve(delay)
+        })
+    })
+}
 const client = got.extend({
     headers:{
         Connection:'keep-alive',
@@ -89,6 +96,7 @@ class UserClass extends BasicClass {
             let code = result?.code
             if(code == 1) {
                 this.log(`完成任务[${task.taskTitle}]成功`)
+                await sleep();
                 await this.queryTaskList();
             } else {
                 let errCode = code || result?.error_response?.code
