@@ -19,9 +19,9 @@ const Origin = 'https://jingcai-h5.jd.com'
 
 const sleep = (delay = 2000) => {
     return new Promise((resolve) => {
-        settimeout(() => {
-            resolve(delay)
-        })
+        setTimeout(() => {
+            resolve()
+        }, delay)
     })
 }
 const client = got.extend({
